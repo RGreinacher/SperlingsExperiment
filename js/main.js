@@ -113,11 +113,16 @@ function askForLetters() {
 
 function showSolution() {
     var allInputsAreCorrect = true;
+    var correctInputFields = 0;
 
     for (i = 0; i < 3; i++) {
         for (j = 0; j < 4; j++) {
-            if (i == challengeRow && $('#row' + challengeRow + 'letter' + j).val().toUpperCase() != lettersInMatrix[challengeRow][j]) {
-                allInputsAreCorrect = false;
+            if (i == challengeRow) {
+                if ($('#row' + challengeRow + 'letter' + j).val().toUpperCase() != lettersInMatrix[challengeRow][j]) {
+                    allInputsAreCorrect = false;
+                } else {
+                    correctInputFields += 1;
+                }
             }
             $('#row' + i + 'letter' + j).val(lettersInMatrix[i][j]);
         }
@@ -128,8 +133,13 @@ function showSolution() {
 
     if (allInputsAreCorrect) {
         roundsWon += 1;
-        alert('Toll! Alles richtig!\nKorrekt erinnert: ' + roundsWon + ' von ' + roundsPlayed);
+        $('#corretRoundsSign').html(roundsWon);
+        $('#playedRoundsSign').html(roundsPlayed);
+        $('#corretFieldsSign').html(correctInputFields);
+        alert('Toll! Alles richtig!');
     } else {
-        alert('Leider nicht ganz richtig.\nKorrekt erinnert: ' + roundsWon + ' von ' + roundsPlayed);
+        $('#playedRoundsSign').html(roundsPlayed);
+        $('#corretFieldsSign').html(correctInputFields);
+        alert('Leider nicht ganz richtig.');
     }
 }
