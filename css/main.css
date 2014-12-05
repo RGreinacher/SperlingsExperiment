@@ -1,0 +1,77 @@
+#quoteBrandenburg {
+  display: block;
+  font-size: 0.8em;
+  color: #AAA;
+}
+
+#quoteStudent {
+  color: #AAA;
+  font-style: italic;
+}
+
+#main-container {
+  margin-top: 4em;
+}
+
+#experiment-control {
+  margin-bottom: 15px;
+}
+
+.experiment-button {
+  width: 100%;
+}
+
+.experiment-button:last-of-type {
+  margin-top: 15px;
+}
+
+#no-js-warning div {
+  margin-bottom: 15px;
+  line-height: 1em;
+  color: #FFFFFF;
+  background-color: #C50E1F;
+  text-align: center;
+}
+
+#no-js-warning div p {
+  margin: 15px 0;
+}
+
+#matrix-content {
+    position: relative;
+    text-align: center;
+    font-size: 4em;
+    line-height: 1.6em;
+    background-color: #EEEEEE;
+}
+
+.matrix-row span {
+  text-align: center;
+}
+
+.letter-input {
+  width: 100%;
+  border: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.default-input {
+  background-color: #EEEEEE;
+}
+
+.highlighted-input {
+  background-color: #C50E1F;
+}
+
+#anchorman {
+  color: #FFFFFF;
+}
+
+footer {
+  margin-top: 0em;
+  border-top: solid 1px #EEEEEE;
+  margin-top: 2.5em;
+  padding-top: 1em;
+  text-align: center;
+}
