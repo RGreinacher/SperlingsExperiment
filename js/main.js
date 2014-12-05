@@ -1,4 +1,4 @@
-var TIME_TO_SHOW_HIGHLIGHTED_INPUTS = 2000;
+var TIME_TO_SHOW_HIGHLIGHTED_INPUTS = 100;
 var DURATION_MATRIX_IS_VISIBLE = 50;
 var alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 var lettersInMatrix = [[], [], []];
