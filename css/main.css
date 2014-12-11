@@ -25,6 +25,17 @@
   margin-top: 15px;
 }
 
+#startRowButton {
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0;
+}
+
+#startSingleFieldButton {
+  border-top: 0px none;
+  border-top-right-radius: 0px;
+  border-top-left-radius: 0;
+}
+
 #no-js-warning div {
   margin-bottom: 15px;
   line-height: 1em;
@@ -84,4 +95,8 @@ footer {
 
 #developerInformation {
   text-align: right;
+}
+
+.unbreakable {
+  display: inline-block;
 }

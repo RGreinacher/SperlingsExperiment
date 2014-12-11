@@ -48,10 +48,13 @@
       
       <div class="row" id="experiment-control">
         <div class="col-xs-8">
-          <p>Nach dem Klick auf "starten" hast du drei Sekunden Zeit um das Kreuz zu fokussieren. Dann werden dir für 50 Millisekunden je vier Buchstaben in drei Zeilen angezeigt. Kurz danach kannst du die entsprechenden Buchstaben in die roten Felder eintragen und mit einem Klick auf den Button "prüfen" sehen, ob du dich richtig erinnert hast.</p>
+          <p>Nach dem Klick auf einen Reizmodus (Reihe oder Einzelfeld) hast du drei Sekunden Zeit um das Kreuz zu fokussieren. Dann werden dir für 50 Millisekunden je vier Buchstaben in drei Zeilen angezeigt. 500ms danach kannst du die entsprechenden Buchstaben in die dann aufleuchtenden roten Felder eintragen und mit einem Klick auf den Button "prüfen" kontrollieren, ob du dich richtig erinnert hast.</p>
+
+          <p>Die beiden Reizmodi unterscheiden sich darin, ob der Hinweisreiz für eine ganze Reihe, also vier Felder, oder für ein einzelnes, zufälliges Feld aufleuchten.</p>
         </div>
         <div class="col-xs-4">
-          <a class="btn btn-default experiment-button" id="startButton" href="#" role="button">starten</a>
+          <a class="btn btn-default experiment-button" id="startRowButton" href="#" role="button">Reihe</a>
+          <a class="btn btn-default experiment-button" id="startSingleFieldButton" href="#" role="button">Einzelfeld</a>
           <a class="btn btn-default experiment-button" id="resultButton" href="#" role="button">prüfen</a>
         </div>
       </div>
@@ -118,21 +121,22 @@
             <span id="playedRoundsSign">0</span>
           </h1>
         </div>
-        <div class="col-xs-12 col-md-6 scoreSigns">
+        <div class="col-xs-12 col-md-6 scoreSigns" id="scoreCorrectFieldsInRow">
           <h1>
             Richtige Felder: 
-            <span id="corretFieldsSign">0</span> / 4
+            <span id="corretFieldsSign">0</span> / 
+            <span id="numberOfFields">0</span>
           </h1>
         </div>
       </div>
 
       <footer class="row">
-        <p class="col-md-6">
-          Diese App wurde durch die Vorlesung und die Frage eines Kommilitonen<br />
-          <span id="quoteStudent">("Können wir das nochmal machen?")</span> inspiriert. Viel Vergnügen :)
+        <p class="col-sm-6">
+          Diese App wurde durch die Vorlesung und die Frage eines Kommilitonen
+          <span id="quoteStudent">("Können wir das nochmal machen?")</span> inspiriert. <span class="unbreakable">Viel Vergnügen :)</span>
         </p>
-        <p class="col-md-6" id="developerInformation">
-          Entwickelt 2014 von <a href="mailto:development@robert-greinacher.de?subject=SperlingsExperiment" title="Mail an Robert">Robert Greinacher</a>,<br />
+        <p class="col-sm-6" id="developerInformation">
+          Entwickelt 2014 von <a href="mailto:development@robert-greinacher.de?subject=SperlingsExperiment" title="Mail an Robert"><span class="unbreakable">Robert Greinacher</span></a>,<br />
           veröffentlicht unter MIT bei <a href="https://github.com/RGreinacher/SperlingsExperiment" title-"GitHub Projektseite">GitHub</a>
         </p>
       </footer>

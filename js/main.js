@@ -1,15 +1,26 @@
-var TIME_TO_SHOW_HIGHLIGHTED_INPUTS = 100;
-var DURATION_MATRIX_IS_VISIBLE = 50;
-var alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-var lettersInMatrix = [[], [], []];
-var challengeRow;
-var roundsPlayed = 0;
-var roundsWon = 0;
+var TIME_TO_SHOW_HIGHLIGHTED_INPUTS = 500,
+    DURATION_MATRIX_IS_VISIBLE = 50;
+var alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'],
+    lettersInMatrix = [[], [], []];
+var challengeRow,
+    challengeColumn;
+var modusTotalRow = true;
+var roundsPlayed = 0,
+    roundsWon = 0;
 
 $('#no-js-warning').remove();
 resetSperlingsExperiment();
 
-$('#startButton').click(function (event) {
+$('#startRowButton').click(function (event) {
+    modusTotalRow = true;
+    $('#numberOfFields').html(4);
+    startSperlingsExperiment();
+    event.preventDefault();
+});
+
+$('#startSingleFieldButton').click(function (event) {
+    modusTotalRow = false;
+    $('#numberOfFields').html(1);
     startSperlingsExperiment();
     event.preventDefault();
 });
@@ -36,6 +47,7 @@ function resetSperlingsExperiment() {
     $('#resultButton').css('visibility', 'hidden');
     $('#anchorman').html('+');
     $('#anchorman').css('color', '#FFFFFF');
+    $('#corretFieldsSign').html(0);
 }
 
 function startSperlingsExperiment() {
@@ -103,11 +115,18 @@ function askForLetters() {
     hideLettersAndAnchorman();
 
     $('.row' + challengeRow + '-letters').css('visibility', 'visible');
-    for (i = 0; i < 4; i++) {
-        $('#row' + challengeRow + 'letter' + i).removeClass('default-input').addClass('highlighted-input');
+    if (modusTotalRow) {
+        for (i = 0; i < 4; i++) {
+            $('#row' + challengeRow + 'letter' + i).removeClass('default-input').addClass('highlighted-input');
+        }
+        $('#row' + challengeRow + 'letter0').focus();
+
+    } else {
+        challengeColumn = Math.floor(Math.random() * 4);
+        $('#row' + challengeRow + 'letter' + challengeColumn).removeClass('default-input').addClass('highlighted-input');
+        $('#row' + challengeRow + 'letter' + challengeColumn).focus();
     }
 
-    $('#row' + challengeRow + 'letter0').focus();
     $('#resultButton').css('visibility', 'visible');
 }
 
@@ -118,12 +137,22 @@ function showSolution() {
     for (i = 0; i < 3; i++) {
         for (j = 0; j < 4; j++) {
             if (i == challengeRow) {
-                if ($('#row' + challengeRow + 'letter' + j).val().toUpperCase() != lettersInMatrix[challengeRow][j]) {
-                    allInputsAreCorrect = false;
-                } else {
-                    correctInputFields += 1;
+                if (modusTotalRow) {
+                    if ($('#row' + challengeRow + 'letter' + j).val().toUpperCase() != lettersInMatrix[challengeRow][j]) {
+                        allInputsAreCorrect = false;
+                    } else {
+                        correctInputFields += 1;
+                    }
+
+                } else if (j == challengeColumn) {
+                    if ($('#row' + challengeRow + 'letter' + j).val().toUpperCase() != lettersInMatrix[challengeRow][j]) {
+                        allInputsAreCorrect = false;
+                    } else {
+                        correctInputFields += 1;
+                    }
                 }
             }
+
             $('#row' + i + 'letter' + j).val(lettersInMatrix[i][j]);
         }
     }
@@ -136,7 +165,7 @@ function showSolution() {
         $('#corretRoundsSign').html(roundsWon);
         $('#playedRoundsSign').html(roundsPlayed);
         $('#corretFieldsSign').html(correctInputFields);
-        alert('Toll! Alles richtig!');
+        alert('Toll! Du hast dich richtig erinnert!');
     } else {
         $('#playedRoundsSign').html(roundsPlayed);
         $('#corretFieldsSign').html(correctInputFields);
